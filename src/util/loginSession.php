@@ -7,8 +7,10 @@ if(!isset($_SESSION['logged'])){
         document.location.href = '../pages/login.php';
     </script>";
 }else{
+
     // id_akun dari session
     if (isset($_SESSION['username'])) {
+        $id_akun  = $_SESSION['id_akun']; 
         $username = $_SESSION['username'];
         $userType = $_SESSION['userType'];
     } else {

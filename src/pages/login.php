@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($row = mysqli_fetch_assoc($result)) {
         if (password_verify($password, $row['password'])) {
             $_SESSION['logged'] = true;
+            $_SESSION['id_akun'] = $row['id_akun'];
             $_SESSION['username'] = $row['username'];
             $_SESSION['userType'] = $row['type'];
             $userType = $row['type'];

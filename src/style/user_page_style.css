@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.4s ease;;
+}
+
+nav .nav-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar .nav-link{
+    display: flex;
+    align-items: center;
+}
+.nav-bar .nav-link li{
+    margin: 0 5px;
+    list-style: none;
+}
+
+.nav-bar .nav-link li a{
+    position: relative;
+    text-decoration: none;
+    padding: 10px;
+}
+
+/* css katalog */
+.kategori{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15% 0 15%;
+}
+.kategori a{
+    text-align: center;
+    min-width: fit-content;
+    padding: 0 100px 0 100px;
+}
+.card-container {
+    padding: 0 15% 0 15%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+.footers {
+    position: relative;
+    min-height: 100vh;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* responsive handphone */
+@media screen and (max-width: 768px) {
+.card-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+}
+
+/* Style untuk .card, img, h3, p, a, dan lainnya */

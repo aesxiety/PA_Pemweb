@@ -8,5 +8,6 @@
 </head>
 <body>
     <h1>ini admin</h1>
+    <a href="../pages/tambah.php">tambah</a>
 </body>
 </html>
