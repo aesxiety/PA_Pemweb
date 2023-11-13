@@ -10,10 +10,13 @@ require "../util/katalog.php";
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../style/user_page_style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="../asset/logo.png">
+    <link rel="stylesheet" href="../style/user_page_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>landing Page Ngawi</title>
 </head>
 <body>
-    <nav>
+    <!-- <nav>
         <div class="nav-bar">
 
             <div class="logo">
@@ -30,7 +33,31 @@ require "../util/katalog.php";
             <div class="tema">icon</div>
 
         </div>
-    </nav> 
+    </nav>  -->
+
+    <!-- Bagian Navbar -->
+    <nav>
+        <input type="checkbox" name="" id="nav-button">
+        <label for="nav-button">&#9776</label>
+
+        <div class="logo">
+                <img src="../asset/logo.png" alt=""> 
+        </div>
+        <ul>
+            <li><a href="akun.php">Akun</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#howto">How To Order</a></li>
+            <li><a href="#about">About US</a></li>
+            <li><a href="keranjang.php">Keranjang</a></li>
+            <li><i id="toggleDark" class="fa-solid fa-moon"></i>
+        </ul>
+    </nav>
+    <header class="land" id="home">
+        <img src="asset/Landing.png" alt="">
+    </header>
+
+
+    <!-- Bagian Isi Konten -->
     <div class="banner">
         <img src="../asset/size-chart.png" alt="banner1">
     </div>
@@ -82,10 +109,36 @@ require "../util/katalog.php";
         }   
         }
         </script>
-        <div class="footers">
+        <!-- <div class="footers">
             <footer>
                 <p>pe footer</p>
             </footer>
+        </div> -->
+        
+
+        <!-- Bagian Footer -->
+        <footer>
+        <div class="footer" id="setting">
+            <div class="icon">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-tiktok"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <div class="footern">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Setting</a></li>
+                    <li><a href="#">About Me</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footerb">
+            <img src="../asset/logo.png" alt="" style="width: 50px; height: 50px;">
+                <p>Copyright 2023,Designed By Kelompok PA</p>
+            </div>
         </div>
+        </footer>
 </body>
 </html>

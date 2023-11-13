@@ -1,0 +1,148 @@
+body 
+{
+    margin: 0;
+    padding: 0;
+    background: url(../asset/darkpic.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Helvetica;
+}
+
+.input 
+{
+    position: fixed;
+    top: 50%;
+    left: 610px;
+    transform: translate(-30%, -50%);
+    background: #7752fee2;
+    padding: 50px;
+    width: 270px;
+    box-shadow: 0px 0px 25px 10px #7752FE; 
+    border-radius: 15px;
+}
+
+.input h1 
+{
+    text-align: center;
+    color:#ffffff;
+    font-size: 30px;
+    font-family: sans-serif;
+    letter-spacing: 3px; padding-top: 0; margin-top: -20px;
+}
+.container-form 
+{
+    display: flex;
+    justify-content: space-between; 
+    margin: 10px; 
+    border-bottom: 1px solid white; 
+    padding: 8px 0;
+}
+
+.container-form i
+{
+    font-size: 20px; 
+    color:#ffffff;
+    padding: 5px 0;
+}
+
+.container-form input 
+{
+    width: 85%;
+    padding: 5px 0;
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 18px;
+}
+
+.btn-input .container-form input:hover 
+{ 
+    background: rgba(10, 10, 10, s 0.5);
+}
+
+.btn-input 
+{
+    
+    margin-left: 10px; 
+    margin-bottom: 20px; 
+    background: none; 
+    border: 1px solid #ffffff;
+    width : 92.5%; 
+    color: white; 
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 18px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all .2s;
+    border-radius :10px;
+}
+
+.btn-input:hover 
+{
+    transform: scale(1.05);
+    transition: 0.3s;
+    background: rgba(255, 255, 255, 0.252)
+}
+
+.links 
+{
+    margin-left: 10px;
+    margin-right: 10px; 
+    margin-bottom: -20px;
+}
+
+.links p
+{
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+}
+.links a
+{
+    color:#190482;
+    font-size:15px;
+    text-decoration: none;
+}
+.links a:hover 
+{
+    text-decoration:underline;
+}
+
+.nanya {
+    color:#7752FE;
+}
+
+.input p {
+    color: white;
+}
+
+ul 
+{
+    padding: 0;
+    margin: 20;
+    text-align: center  ;
+    list-style: none;
+}
+
+ul :hover 
+{
+    transform: scale(1.05);
+    transition: 0.3s;
+    background: rgba(255, 255, 255, 0.252)
+}
+
+#toggleDark {
+    color: white;
+}
+
+#input::placeholder {
+  color: #ffffff;
+}
+
+#input {
+  color: white;
+}
