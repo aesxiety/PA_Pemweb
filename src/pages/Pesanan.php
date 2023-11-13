@@ -63,6 +63,7 @@ if (empty($array_pesanan)) {
                 $result_detail_pesanan = mysqli_query($conn,"SELECT dtl.*, spt.* FROM detail_pesanan dtl
                     JOIN sepatu spt ON spt.id_sepatu = dtl.id_sepatu
                     WHERE dtl.id_pesanan = $id_pesanan");
+                $array_detail=[];
                 while ($row_detail_pesanan = mysqli_fetch_assoc($result_detail_pesanan)) {
                     $array_detail[]=$row_detail_pesanan; 
                 }
@@ -87,6 +88,12 @@ if (empty($array_pesanan)) {
                 <hr>
                 <div class="footer-pesanan">
                     <p>Total Pembayaran: <?=$record_pesanan['total_pembayaran'];?></p>
+                    <!-- jika belum bayar ngelink ke pembayaran.php jika sudah bayar neglink ke chat admin -->
+                    <?php if ($record_pesanan['status_pesanan'] == 'belum dibayar') : ?>
+                        <a href="pembayaran.php?id_pesanan=<?=$record_pesanan['id_pesanan']?>" class="btn-bayar">Bayar</a>
+                    <?php elseif ($record_pesanan['status_pesanan'] == 'sudah dibayar') : ?>
+                        <a href="chat_admin.php?id_pesanan=<?=$record_pesanan['id_pesanan']?>" class="btn-chat-admin">Chat Admin</a>
+                    <?php endif; ?>
                 </div>
             </div>
             <hr>

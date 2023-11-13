@@ -25,11 +25,11 @@ if ($result_cari_keranjang->num_rows > 0) {
     $id_pesanan = $conn->insert_id;
 }
 
-$detailpesanan = mysqli_query($conn, "SELECT * FROM detail_pesanan dtl
+$detailpesanan = mysqli_query($conn, "SELECT dtl.*, psn.* ,usr.*,spt.* FROM detail_pesanan dtl
 JOIN user usr ON usr.id_akun =dtl.id_pelanggan
 JOIN sepatu spt ON spt.id_sepatu = dtl.id_sepatu
 JOIN pesanan psn ON psn.id_pesanan = dtl.id_pesanan
-WHERE dtl.id_pelanggan = $id_akun AND psn.status_pesanan = 'keranjang'" );
+WHERE dtl.id_pelanggan = $id_pelanggan AND dtl.id_pesanan = $id_pesanan" );
 $array_join = [];
 
 while ($row = mysqli_fetch_assoc($detailpesanan)) {
@@ -42,6 +42,7 @@ if (empty($array_join)) {
             document.location.href = 'UserPage.php';
         </script>";
 }
+
 if (isset($_POST["pesan"])) {
     $total_pembayaran = $_POST['total-pembayaran-input'];
     $id_pelanggan = $id_akun;
@@ -79,7 +80,7 @@ if (isset($_POST["pesan"])) {
 
     echo "<script>
             alert('Pesanan berhasil di-checkout');
-            document.location.href = 'UserPage.php';
+            document.location.href = 'pembayaran.php';
         </script>";
 }
 

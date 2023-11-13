@@ -23,7 +23,12 @@ if (isset($_POST["pesan"])) {
     $id_pelanggan = $id_akun;
     $sepatu_id = $id_sepatu;
     $total_pembayaran = 0;
-    $local_time = $_POST["local-time"];
+    //localtime
+    date_default_timezone_set('Asia/Makassar');
+    $localTimezone = new DateTimeZone('Asia/Makassar');
+    $date = new DateTime('now', $localTimezone);
+    $formattedDate = $date->format('Y-m-d H:i:s');
+    // ambil post
     $ukuran_sepatu = $_POST["ukuran-sepatu"];
     $jumlah_sepatu = $_POST["jumlah-sepatu"];
     $harga_satuan = $_POST['harga-satuan'];
@@ -49,7 +54,7 @@ if (isset($_POST["pesan"])) {
         $stmt_update->close();
     } else {
         // Pesanan belum ada, tambahkan pesanan baru
-        $stmt_insert = $conn->prepare("SELECT id_pesanan FROM pesanan WHERE id_pelanggan = ? AND status_pesanan = 'keranjang' LIMIT 1");
+        $stmt_insert = $conn->prepare("SELECT id_pesanan FROM pesanan WHERE id_pelanggan = ? AND status_pesanan = 'Keranjang' LIMIT 1");
         $stmt_insert->bind_param("i", $id_pelanggan);
         $stmt_insert->execute();
         $result_insert = $stmt_insert->get_result();
@@ -60,19 +65,57 @@ if (isset($_POST["pesan"])) {
             $id_pesanan = $row_insert['id_pesanan'];
         } else {
             // Jika belum ada keranjang yang berjalan, buat pesanan baru
+            $total_pembayaran = 0; // You need to set the initial value for total_pembayaran
+            $formattedDate = date('Y-m-d H:i:s'); // Assuming formattedDate is required
+
             $stmt_insert = $conn->prepare("INSERT INTO pesanan (id_pelanggan, total_pembayaran, tanggal_pesanan, status_pesanan) VALUES (?, ?, ?, 'Keranjang')");
-            $stmt_insert->bind_param("iis", $id_pelanggan, $total_pembayaran, $local_time);
-            $stmt_insert->execute();
-            // Dapatkan ID_Pesanan baru
-            $id_pesanan = $conn->insert_id;
+            $stmt_insert->bind_param("ids", $id_pelanggan, $total_pembayaran, $formattedDate);
+            
+            if ($stmt_insert->execute()) {
+                // Dapatkan ID_Pesanan baru
+                $id_pesanan = $conn->insert_id;
+            } else {
+                // Handle error
+                die("Error creating pesanan: " . mysqli_error($conn));
+            }
         }
 
         // Tambahkan produk ke keranjang dengan ID_Pesanan yang sesuai
         $stmt = $conn->prepare("INSERT INTO detail_pesanan (id_pesanan, id_pelanggan, id_sepatu, ukuran_sepatu, harga_satuan, jumlah_sepatu, total_harga) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("iiiiiii", $id_pesanan, $id_pelanggan, $id_sepatu, $ukuran_sepatu, $harga_satuan, $jumlah_sepatu, $total);
-        $stmt->execute();
 
-        $stmt->close();
+        if ($stmt->execute()) {
+            // Success
+            $stmt->close();
+        } else {
+            // Handle error
+            die("Error adding product to detail_pesanan: " . mysqli_error($conn));
+        }
+
+        // // Pesanan belum ada, tambahkan pesanan baru
+        // $stmt_insert = $conn->prepare("SELECT id_pesanan FROM pesanan WHERE id_pelanggan = ? AND status_pesanan = 'keranjang' LIMIT 1");
+        // $stmt_insert->bind_param("i", $id_pelanggan);
+        // $stmt_insert->execute();
+        // $result_insert = $stmt_insert->get_result();
+
+        // if ($result_insert->num_rows > 0) {
+        //     // Jika sudah ada keranjang yang sedang berjalan, gunakan ID_Pesanan yang sudah ada
+        //     $row_insert = $result_insert->fetch_assoc();
+        //     $id_pesanan = $row_insert['id_pesanan'];
+        // } else {
+        //     // Jika belum ada keranjang yang berjalan, buat pesanan baru
+        //     $stmt_insert = $conn->prepare("INSERT INTO pesanan (id_pelanggan, total_pembayaran, tanggal_pesanan, status_pesanan) VALUES (?, ?, ?, 'Keranjang')");
+        //     $stmt_insert->bind_param("iis", $id_pelanggan, $total_pembayaran, $formattedDate);
+        //     $stmt_insert->execute();
+        //     // Dapatkan ID_Pesanan baru
+        //     $id_pesanan = $conn->insert_id;
+        // }
+
+        // // Tambahkan produk ke keranjang dengan ID_Pesanan yang sesuai
+        // $stmt = $conn->prepare("INSERT INTO detail_pesanan (id_pesanan, id_pelanggan, id_sepatu, ukuran_sepatu, harga_satuan, jumlah_sepatu, total_harga) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        // $stmt->bind_param("iiiiiii", $id_pesanan, $id_pelanggan, $id_sepatu, $ukuran_sepatu, $harga_satuan, $jumlah_sepatu, $total);
+        // $stmt->execute();
+        // $stmt->close();
     }
 
     $stmt_check->close();
@@ -103,13 +146,15 @@ if (isset($_POST["pesan"])) {
         <p>Jenis Sepatu : <?php echo $data_pesanan_sepatu['jenis_sepatu']; ?></p>
         <p>Deskripsi :</p>
         <p><?php echo $data_pesanan_sepatu['deskripsi']; ?></p>
+        
+        <!-- panduan ukuran -->
+
     </div>
     <div class="order-form">
         <fieldset>
             <h3>Pesan Sepatu</h3>
             <p>Silahkan Masukan Detail Pesanan</p>
             <form action="" method="post" onsubmit="setLocalTime()">
-
                 <!-- Menambahkan input tersembunyi untuk menyimpan harga satuan -->
                 <input type="hidden" name="harga-satuan" value="<?php echo $data_pesanan_sepatu['harga']; ?>">
                 <!-- Tampilkan stok secara live di sini -->
@@ -172,9 +217,6 @@ if (isset($_POST["pesan"])) {
                     <p>Total Harga: Rp<span id="harga"></span></p>
                 </div>
 
-                <!-- hidden input -->
-                <input type="datetime-local" name="local-time" id="local-time-input" hidden>
-
                 <div>
                     <button type="submit" name="pesan">Tambahkan Keranjang</button>
                 </div>
@@ -182,15 +224,6 @@ if (isset($_POST["pesan"])) {
         </fieldset>
     </div>
     </div>
-
-<!-- mengambil local datetime -->
-<script>
-    function setLocalTime() {
-        var now = new Date();
-        var localDatetime = now.toISOString().slice(0, 16);
-        document.getElementById("local-time-input").value = localDatetime;
-    }
-</script>
 
 <!-- Script untuk menampilkan stok secara live menggunakan AJAX -->
 <script>

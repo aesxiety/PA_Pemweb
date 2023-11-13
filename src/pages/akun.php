@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="informasi_rekening.php">Informasi rekening</a>
+    <br>
     <a href="UserPage.php">kembali</a>
     <hr>
     <a href="pesanan.php">pesanan</a>
