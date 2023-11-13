@@ -1,0 +1,13 @@
+.container-pesanan{
+    padding: 0 10% 0 10%;
+    display: flex;
+    flex-direction: row;  
+
+}
+
+@media (max-width: 800px) {
+    .container-pesanan {
+      flex-direction: column;
+    }
+  }
+

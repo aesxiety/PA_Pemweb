@@ -1,9 +1,6 @@
 <?php
 require "../util/loginSession.php";
 require "../util/katalog.php";
-echo "<script>
-    alert('Selamat Datang $username ')
-</script>";
 
 ?>
 
@@ -24,15 +21,19 @@ echo "<script>
             </div>
             <ul class="nav-link">
                 <li><a href=""><i class='bx bx-user' ></i></a></li>
-                <li><a href="">akun</a></li>
+                <li><a href="akun.php">akun</a></li>
                 <li><a href="">Home</a></li>
                 <li><a href="">How To Orfer</a></li>
                 <li><a href="">About Us</a></li>
+                <li><a href="keranjang.php">Keranjang</a></li>
             </ul>
             <div class="tema">icon</div>
 
         </div>
     </nav> 
+    <div class="banner">
+        <img src="../asset/size-chart.png" alt="banner1">
+    </div>
 
     <div class="katalog-sepatu">
         <div class="kategori">
@@ -46,9 +47,13 @@ echo "<script>
                 <div class="card" data-jenis="<?php echo $sepatu['jenis_sepatu']; ?>">
                     <img src="../img/<?php echo $sepatu['sepatu_img']; ?>" alt="Image Sepatu" width='150' height='150'>
                     <h3><?php echo $sepatu['nama_sepatu']; ?></h3>
-                    <p>ID Sepatu: <?php echo $sepatu['id_sepatu']; ?></p>
                     <p>Jenis Sepatu: <?php echo $sepatu['jenis_sepatu']; ?></p>
-                    <button><a href="pesanan.php?id_sepatu=<?php echo $sepatu['id_sepatu']; ?>">Pesan Sekarang</a></button>
+                    <p>Harga Sepatu: <?php echo $sepatu['harga']?></p>
+                    <p>Deskripsi :</p>
+                    <p><?php echo $sepatu['deskripsi']; ?></p>
+                    <a href="addchart.php?id=<?php echo $sepatu['id_sepatu']; ?>">
+                        <button>Pesan Sekarang</button>
+                    </a>
                 </div>
             <?php endforeach; ?>
         </div>

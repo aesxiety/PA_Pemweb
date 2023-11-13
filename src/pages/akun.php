@@ -6,7 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>ini admin</h1>
-    <a href="../pages/tambah.php">tambah</a>
+    <a href="UserPage.php">kembali</a>
+    <hr>
+    <a href="pesanan.php">pesanan</a>
+    <hr>
+    <a href="../util/logout.php">logout</a>
 </body>
 </html>
