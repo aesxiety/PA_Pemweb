@@ -39,6 +39,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Ngawi Sole</title>
 </head>
 <body>
+<form action="" method="post" enctype="multipart/form-data">
+    <div class="input">
+        <h1>Registrasi Yak!</h1>
+        <form action="" method="post">
+            <div class="box-input">
+            <i class="fa-solid fa-user"></i>
+                <input type="text" placeholder="Username" name="username" id="input">
+            </div>
+            <div class="box-input">
+                <i class="fa fa-lock"></i>
+                <input type="password" placeholder="Password" name="password" id="input">
+            </div>
+            <div class="box-input">
+                <i class="fa-solid fa-signature"></i>
+                <input type="text" placeholder="Nama" name="nama" id="input">
+            </div>
+            <div class="box-input">
+                <i class="fa-solid fa-address-book"></i>
+                <input type="text" placeholder="Alamat" name="alamat" id="input">
+            </div>
+            <div class="box-input">
+            <i class="fa fa-envelope-open-text"></i> 
+                <input type="text" placeholder="Email" name="email" id="input">
+            </div>
+            <div class="box-input">
+                <i class="fa-solid fa-address-card"></i>
+                <input type="text" placeholder="No Handphone" name="hp" id="input">
+            </div>
+            <button type="submit" name="regis" class="btn-input">Sign In</button>
+            <div class="bottom">
+                <p>Sudah Terdaftar ?
+                    <a href="test.php">Login Ulang Sini!</a>
+                </p>
+            </form>
+    </div>
+    </form> 
+<!--     
     <form action="" method="post">
         <label for="">Username : </label>
         <input type="text" name="username" required><br>
@@ -53,6 +90,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="">No HP : </label>
         <input type="text" name="hp" step="any"required><br>
         <input type="submit" value="Register" name="register">
-    </form>
+    </form> -->
 </body>
 </html>
