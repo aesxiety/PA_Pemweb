@@ -12,7 +12,7 @@ if (isset($_POST["tambah"])) {
     $gambar = $_FILES['sepatu_img']['name'];
     $explode = explode('.', $gambar);
     $ekstensi = strtolower(end($explode));
-    $gambar_baru = $nama_sepatu . "-" . date("Y-m-d") . "." . $ekstensi;
+    $gambar_baru = "../img/". date("Y-m-d") . "-" . $nama_sepatu . "." . $ekstensi;
     $tmp = $_FILES["sepatu_img"]["tmp_name"];
 
     // Simpan data ke database
