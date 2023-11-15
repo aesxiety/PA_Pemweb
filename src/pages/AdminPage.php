@@ -10,7 +10,7 @@ require "../util/katalog.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/user_page_style.css">
+    <link rel="stylesheet" href="../style/admin_page.css">
     <script src="../javascript/admin.js"></script>
     <title>Admin Landing Page</title>
 </head>
@@ -72,6 +72,7 @@ require "../util/katalog.php";
             </div>
         </div>
         </footer>
+
 </body>
 
 </html>

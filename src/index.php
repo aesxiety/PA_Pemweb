@@ -1,7 +1,5 @@
 <?php
-require "../util/loginSession.php";
-require "../util/katalog.php";
-
+require "util/katalog.php";
 ?>
 
 <!DOCTYPE html>
@@ -10,8 +8,8 @@ require "../util/katalog.php";
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../style/user_page_style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../asset/logo.png">
-    <link rel="stylesheet" href="../style/user_page_style.css">
+    <link rel="icon" href="asset/logo.png">
+    <link rel="stylesheet" href="style/user_page_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>landing Page Ngawi</title>
 </head>
@@ -41,14 +39,14 @@ require "../util/katalog.php";
         <label for="nav-button">&#9776</label>
 
         <div class="logo">
-                <img src="../asset/logo.png" alt=""> 
+                <img src="asset/logo.png" alt=""> 
         </div>
         <ul>
-            <li><a href="akun.php">Akun</a></li>
+            <li><a href="pages/akun.php">Akun</a></li>
             <li><a href="#home">Home</a></li>
             <li><a href="#howto">How To Order</a></li>
             <li><a href="#about">About US</a></li>
-            <li><a href="keranjang.php">Keranjang</a></li>
+            <li><a href="pages/keranjang.php">Keranjang</a></li>
             <li><i id="toggleDark" class="fa-solid fa-moon"></i>
         </ul>
     </nav>
@@ -59,7 +57,7 @@ require "../util/katalog.php";
 
     <!-- Bagian Isi Konten -->
     <div class="banner">
-        <img src="../asset/size-chart.png" alt="banner1">
+        <img src="asset/size-chart.png" alt="banner1">
     </div>
 
     <div class="katalog-sepatu">
@@ -72,13 +70,13 @@ require "../util/katalog.php";
         <div class="card-container">
             <?php foreach ($data_sepatu_array as $sepatu) : ?>
                 <div class="card" data-jenis="<?php echo $sepatu['jenis_sepatu']; ?>">
-                    <img src="../img/<?php echo $sepatu['sepatu_img']; ?>" alt="Image Sepatu" width='150' height='150'>
+                    <img src="img/<?php echo $sepatu['sepatu_img']; ?>" alt="Image Sepatu" width='150' height='150'>
                     <h3><?php echo $sepatu['nama_sepatu']; ?></h3>
                     <p>Jenis Sepatu: <?php echo $sepatu['jenis_sepatu']; ?></p>
                     <p>Harga Sepatu: <?php echo $sepatu['harga']?></p>
                     <p>Deskripsi :</p>
                     <p><?php echo $sepatu['deskripsi']; ?></p>
-                    <a href="addchart.php?id=<?php echo $sepatu['id_sepatu']; ?>">
+                    <a href="./pages/addchart.php?id=<?php echo $sepatu['id_sepatu']; ?>">
                         <button>Pesan Sekarang</button>
                     </a>
                 </div>
@@ -129,7 +127,7 @@ require "../util/katalog.php";
                 </ul>
             </div>
             <div class="footerb">
-            <img src="../asset/logo.png" alt="" style="width: 50px; height: 50px;">
+            <img src="asset/logo.png" alt="" style="width: 50px; height: 50px;">
                 <p>Copyright 2023,Designed By Kelompok PA</p>
             </div>
         </div>
