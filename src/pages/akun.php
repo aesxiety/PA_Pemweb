@@ -1,3 +1,8 @@
+<?php
+require "../util/koneksi.php";
+require "../util/loginSession.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

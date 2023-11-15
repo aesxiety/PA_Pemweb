@@ -36,9 +36,10 @@ if(mysqli_num_rows($result_select_rekening) > 0) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get data from the form
-    $id_pesanan = $_POST['id_pesanan'];
-    $rekening_tujuan = $_POST['rekening_tujuan'];
-    $pembayaran= $_POST['total-pembayaran'];
+    $id_pesanan = mysqli_real_escape_string($conn, $_POST['id_pesanan']);
+    $rekening_tujuan = mysqli_real_escape_string($conn, $_POST['rekening_tujuan']);
+    $pembayaran = mysqli_real_escape_string($conn, $_POST['total-pembayaran']);
+    
     //localtime
     date_default_timezone_set('Asia/Makassar');
     $localTimezone = new DateTimeZone('Asia/Makassar');
@@ -63,13 +64,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($result_update_status) {
                 echo "<script>
                         alert('Transaksi berhasil diproses');
-                        document.location.href = 'UserPage.php';
+                        // document.location.href = 'UserPage.php';
                     </script>";
             } else {
                 echo "Gagal memperbarui status pesanan. Silakan coba lagi.";
             }
-            // header("Location: UserPage.php");
-            // exit();
+            header("Location: UserPage.php");
+            exit();
         } else {
             echo "Gagal menyimpan data ke database. Silakan coba lagi.";
         }
@@ -101,6 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
+<form action="" method="post" enctype="multipart/form-data">
     <div class="detail-pembayaran">
         <h3>Total Pembayaran :</h3>
         <input type="number" name="total-pembayaran" value="<?= $array_pesanan[0]['total_pembayaran']; ?>" readonly>
@@ -145,15 +147,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
     </div>
     <div class="form-pembayaran">
-        <form action="" method="post" enctype="multipart/form-data">
-            <input hidden type="number" name="id_pesanan" value="<?= $array_pesanan[0]['id_pesanan']; ?>">
-            <label for="bukti-pembayaran">Bukti Pembayaran:</label>
-            <input type="file" id="bukti-pembayaran" name="bukti_pembayaran" accept="image/*" required>
-            <br>
-            <button type="submit">Proses Transaksi</button>
-        </form>
+        <input hidden type="number" name="id_pesanan" value="<?= $array_pesanan[0]['id_pesanan']; ?>">
+        <label for="bukti-pembayaran">Bukti Pembayaran:</label>
+        <input type="file" id="bukti-pembayaran" name="bukti_pembayaran" accept="image/*" required>
+        <br>
+        <button type="submit">Proses Transaksi</button>
     </div>
-
+</form>
 
 <script>
     function showRekeningInfo() {
