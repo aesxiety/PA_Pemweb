@@ -12,6 +12,7 @@ if(!isset($_SESSION['logged'])){
     if (isset($_SESSION['username'])) {
         $id_akun  = $_SESSION['id_akun']; 
         $username = $_SESSION['username'];
+        $email    = $_SESSION['email'];
         $userType = $_SESSION['userType'];
     } else {
         echo "<script> 
