@@ -14,24 +14,6 @@ require "util/katalog.php";
     <title>landing Page Ngawi</title>
 </head>
 <body>
-    <!-- <nav>
-        <div class="nav-bar">
-
-            <div class="logo">
-                <h1>ini logo</h1>
-            </div>
-            <ul class="nav-link">
-                <li><a href=""><i class='bx bx-user' ></i></a></li>
-                <li><a href="akun.php">akun</a></li>
-                <li><a href="">Home</a></li>
-                <li><a href="">How To Orfer</a></li>
-                <li><a href="">About Us</a></li>
-                <li><a href="keranjang.php">Keranjang</a></li>
-            </ul>
-            <div class="tema">icon</div>
-
-        </div>
-    </nav>  -->
 
     <!-- Bagian Navbar -->
     <nav>
@@ -42,11 +24,10 @@ require "util/katalog.php";
                 <img src="asset/logo.png" alt=""> 
         </div>
         <ul>
-            <li><a href="pages/akun.php">Akun</a></li>
             <li><a href="#home">Home</a></li>
             <li><a href="#howto">How To Order</a></li>
             <li><a href="#about">About US</a></li>
-            <li><a href="pages/keranjang.php">Keranjang</a></li>
+            <li><a href="pages/login.php">Login | Regist</a></li>
             <li><i id="toggleDark" class="fa-solid fa-moon"></i>
         </ul>
     </nav>

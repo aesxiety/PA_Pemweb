@@ -1,6 +1,13 @@
 <?php
 require "../util/koneksi.php";
-// require "../util/loginSession.php";
+require "../util/loginSession.php";
+
+if ($userType !== 'admin') {
+    echo "<script>
+        alert('kamu itu bukan admin');
+        document.location.href = '../index.php';
+    </script>";
+}
 
 $result_query = mysqli_query($conn, "SELECT * FROM pesanan WHERE status_pesanan = 'sudah dibayar'");
 $array_konfirmasi = [];
@@ -52,12 +59,11 @@ if (isset($_POST['konfirmasi-dibatalkan'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/konfirmasi_pesanan.css">
-    <script src="../javascript/konfirmasi_pesanan.js"></script>
+    <link rel="stylesheet" href="style/konfirmasi_pesanan.css">
+    <script src="script/konfirmasi_pesanan.js"></script>
     <title>Document</title>
 </head>
 <body>

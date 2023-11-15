@@ -3,11 +3,11 @@ require "../util/loginSession.php";
 require "../util/katalog.php";
 require "../util/koneksi.php";
 
-// Check if the user is an admin (you should define the criteria for admin users)
 if ($userType !== 'admin') {
-    // Redirect to an unauthorized page or handle unauthorized access as needed
-    header("Location: unauthorized.php");
-    exit();
+    echo "<script>
+        alert('kamu itu bukan admin');
+        document.location.href = '../index.php';
+    </script>";
 }
 
 // Query to fetch all products from the 'sepatu' table

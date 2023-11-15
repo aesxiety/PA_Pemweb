@@ -1,5 +1,13 @@
 <?php
 require "../util/koneksi.php";
+require "../util/loginSession.php";
+
+if ($userType !== 'admin') {
+    echo "<script>
+        alert('kamu itu bukan admin');
+        document.location.href = '../index.php';
+    </script>";
+}
 
 if (isset($_POST["tambah"])) {
     // Ambil data dari formulir

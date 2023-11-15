@@ -8,7 +8,6 @@ require "../util/katalog.php";
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../style/user_page_style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../asset/logo.png">
     <link rel="stylesheet" href="../style/user_page_style.css">
@@ -16,25 +15,6 @@ require "../util/katalog.php";
     <title>landing Page Ngawi</title>
 </head>
 <body>
-    <!-- <nav>
-        <div class="nav-bar">
-
-            <div class="logo">
-                <h1>ini logo</h1>
-            </div>
-            <ul class="nav-link">
-                <li><a href=""><i class='bx bx-user' ></i></a></li>
-                <li><a href="akun.php">akun</a></li>
-                <li><a href="">Home</a></li>
-                <li><a href="">How To Orfer</a></li>
-                <li><a href="">About Us</a></li>
-                <li><a href="keranjang.php">Keranjang</a></li>
-            </ul>
-            <div class="tema">icon</div>
-
-        </div>
-    </nav>  -->
-
     <!-- Bagian Navbar -->
     <nav>
         <input type="checkbox" name="" id="nav-button">
@@ -44,7 +24,14 @@ require "../util/katalog.php";
                 <img src="../asset/logo.png" alt=""> 
         </div>
         <ul>
-            <li><a href="akun.php">Akun</a></li>
+            <li>
+                <a href="akun.php" id="akun-dropdown"><i class="fa-regular fa-user" style="color: #ffffff;"></i> Akun</a>
+                <ul class="dropdown-content">
+                    <li><a href="akun.php">Profile</a></li>
+                    <li><a href="pesanan.php">Pesanan Saya</a></li>
+                    <li><a href="../util/logout.php">Log Out</a></li>
+                </ul>
+            </li>
             <li><a href="#home">Home</a></li>
             <li><a href="#howto">How To Order</a></li>
             <li><a href="#about">About US</a></li>

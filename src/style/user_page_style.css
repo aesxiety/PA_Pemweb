@@ -175,11 +175,10 @@ body.dark {
 
 
 /* Navbar */
-
 nav {
     background: linear-gradient(to right, black, #7752FE);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     position :fixed;
     box-shadow: 0 2px 10px ;
     width: 100%;
@@ -230,6 +229,30 @@ label {
 
 header img {
     width: 100%;
+}
+
+/* dropdown li akun */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #7752FE;
+    min-width: 100px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+li:hover .dropdown-content {
+    display: block;
 }
 
 /* Isi */

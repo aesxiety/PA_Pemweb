@@ -1,13 +1,13 @@
-    <?php
+<?php
 require "../util/loginSession.php";
 require "../util/katalog.php";
 require "../util/koneksi.php";
 
-// Check if the user is an admin (you should define the criteria for admin users)
 if ($userType !== 'admin') {
-    // Redirect to an unauthorized page or handle unauthorized access as needed
-    header("Location: unauthorized.php");
-    exit();
+    echo "<script>
+        alert('kamu itu bukan admin');
+        document.location.href = '../index.php';
+    </script>";
 }
 
 // Get the product ID from the URL
@@ -37,6 +37,7 @@ if (isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <title>Edit Product</title>
+    <link rel="stylesheet" href="style/edit_produk.css">
 </head>
 <body>
     <h1>Edit Product</h1>

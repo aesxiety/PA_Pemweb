@@ -2,6 +2,13 @@
 require "../util/loginSession.php";
 require "../util/koneksi.php";
 require "../util/katalog.php";
+
+if ($userType !== 'admin') {
+    echo "<script>
+        alert('kamu itu bukan admin');
+        document.location.href = '../index.php';
+    </script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -10,8 +17,8 @@ require "../util/katalog.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/admin_page.css">
-    <script src="../javascript/admin.js"></script>
+    <link rel="stylesheet" href="style/admin_page.css">
+    <script src="script/admin.js"></script>
     <title>Admin Landing Page</title>
 </head>
 
@@ -31,7 +38,7 @@ require "../util/katalog.php";
             <p>
                 <a href="javascript:void(0);" onclick="toggleDropdown('dropdown2')">Manajemen Pesanan</a>
                 <div class="dropdown" id="dropdown2">
-                    <a href="#">Konfirmasi Pesanan</a>
+                    <a href="konfirmasi_pesanan.php">Konfirmasi Pesanan</a>
                     <a href="#">Selesaikan Pesanan</a>
                     <a href="#">Lihat Detail Pesanan</a>
                 </div>

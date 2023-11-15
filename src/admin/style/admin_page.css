@@ -544,3 +544,13 @@ footer {
     font-size: 20px;
     margin-right: 10px;
 }
+
+
+
+.submenu.show {
+    display: flex;
+}
+
+.submenu .dropdown.show {
+    display: flex;
+}
