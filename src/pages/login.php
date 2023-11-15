@@ -1,6 +1,10 @@
 <?php
 session_start();
 require "../util/koneksi.php";
+
+// deklarasi pengcekan kesalahan login
+$verifikasi_login=true;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -18,25 +22,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $userType = $row['type'];
 
             if ($userType == 'admin') {
-                header("Location: ../pages/AdminPage.php");
+                header("Location: ../admin/index.php");
             }elseif ($userType == "user") {
                 header("Location: ../pages/UserPage.php");
             }
             exit();
         } else {
-            echo "
-                <script>
-                    alert('Invalid Password');
-                    document.location.href = '../pages/login.php';
-                </script>
-                ";
+            $verifikasi_login = false;
+            $error_value = 'password';
         }
     } else {
-        echo "  <script>
-                    alert('Invalid Username');
-                    document.location.href = '../pages/login.php';
-                </script> ";
-            }
+        $verifikasi_login = false;
+        $error_value = 'username';
+    }           
 }
 ?>
 
@@ -54,12 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <form action="" method="post" enctype="multipart/form-data">
     <div class="input">
         <h1>Log In Cuy!</h1>
-        <?php
-    if (isset($error)) {
-    } else {
-        echo "<p style='color: white; display:none;'> Username/Password Salah! </p>";
-    }
-    ?>
+        <?php if ($verifikasi_login == false) {
+            echo "<p>Invailid $error_value</p>";}?>
         <form action="" method="post">
             <div class="container-form">
                 <i class="fa fa-envelope-open-text"></i> 
@@ -74,18 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 Don't have account? <a href="../pages/regis.php">Sign Up Now</a>
             </div>
         </form>
-        <!-- <div class="container-form">
-        <form action="" method="post">
-            <label for="" class="left">Username : </label>
-            <input type="text" name="username" required><br>
-            <label for="" class="left">Password : </label>
-            <input type="password" name="password" required><br>
-            <input type="submit" value="Login" name="login">
-    
-            <div class="links">
-                Don't have account? <a href="../pages/regis.php">Sign Up Now</a>
-            </div>
-        </form>
-    </div> -->
+    </div>
 </body>
 </html>

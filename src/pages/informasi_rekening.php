@@ -37,7 +37,7 @@ if(mysqli_num_rows($result_select_rekening) > 0) {
         }
 
         nav {
-            background-color: #333;
+            background-color:  #7720FE;
             color: #fff;
             padding: 10px;
             text-align: right;
@@ -54,11 +54,11 @@ if(mysqli_num_rows($result_select_rekening) > 0) {
         }
 
         aside {
-            width: 250px;
+            width: 0p15x;
             height: 100%;
-            background-color: #333;
+            background-color: #7750FE;
             color: #fff;
-            padding: 20px;
+            padding: 19px;
             box-sizing: border-box;
         }
 
@@ -68,11 +68,11 @@ if(mysqli_num_rows($result_select_rekening) > 0) {
         }
 
         footer {
-            background-color: #333;
+            background-color: #7720FE;
             color: #fff;
             padding: 10px;
             text-align: center;
-            margin-top: auto; /* Mendorong footer ke bagian bawah */
+            margin-top: auto;
         }
 
         .icon a {
@@ -91,27 +91,34 @@ if(mysqli_num_rows($result_select_rekening) > 0) {
         .footer ul li {
             margin: 0 10px;
         }
+        
+        /* style untuk didalam main */
+        .detail-pesanan {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 10px;
+        }
+
+        .img-detail-pesanan img {
+            margin-right: 10px; 
+        }
     </style>
 </head>
 <body>
     <nav>
+        <a href="UserPage.php">kembali</a>    
         <a href="../util/logout.php">Logout</a>
-        <a href="UserPage.php">Kembali</a>    
     </nav>
-
     <header>
         <aside>
-            <div class="dropdown">
-                <a href="#" class="menu-link">Manajemen Akun</a>
-                <div class="dropdown-content">
-                    <a href="informasi_rekening.php" class="menu-item">Informasi Rekening</a>
-                    <a href="pesanan.php" class="menu-item">Alamat Saya</a>
-                </div>
-            </div>
-
-            <a href="#" class="menu-item">Pesanan Saya</a>
-
-            <a href="#" class="menu-item">Chat Admin</a>
+            <ul>
+                <li><a href="#" class="menu-link">Manajemen Akun</a></li>
+                <li><a href="#" class="menu-item">Informasi Rekening</a></li>
+                <li><a href="pesanan.php" class="menu-item">Pesanan</li>
+                <li><a href="#" class="menu-item">Chat </li>
+                <li></li>
+            </ul>
         </aside>
 
         <main>
@@ -131,7 +138,6 @@ if(mysqli_num_rows($result_select_rekening) > 0) {
             <?php endif; ?>
         </main>
     </header>
-
     <footer class="footer" id="setting">
         <div class="icon">
             <a href="#"><i class="fab fa-facebook"></i></a>
@@ -153,18 +159,5 @@ if(mysqli_num_rows($result_select_rekening) > 0) {
             <p>Copyright 2023, Designed By Kelompok PA</p>
         </div>
     </footer>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Menangani perilaku dropdown
-        var dropdown = document.querySelector('.dropdown');
-        dropdown.addEventListener('mouseover', function () {
-            dropdown.querySelector('.dropdown-content').style.display = 'block';
-        });
-        dropdown.addEventListener('mouseout', function () {
-            dropdown.querySelector('.dropdown-content').style.display = 'none';
-        });
-    });
-</script>
 </body>
 </html>

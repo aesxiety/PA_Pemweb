@@ -26,7 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Error: " . mysqli_error($koneksi);
     }
-
     mysqli_stmt_close($stmt);
 }
 ?>
@@ -37,43 +36,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../asset/logo.png">
-    <link rel="stylesheet" href="../style/login.css">
+    <link rel="stylesheet" href="../style/regis.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Ngawi Sole</title>
 </head>
 <body>
-<form action="" method="post" enctype="multipart/form-data">
+<form action="" method="post">
     <div class="input">
         <h1>Registrasi Yak!</h1>
         <form action="" method="post">
             <div class="box-input">
             <i class="fa-solid fa-user"></i>
-                <input type="text" placeholder="Username" name="username" id="input">
+                <input type="text" placeholder="Username" name="username" id="input" required>
             </div>
             <div class="box-input">
                 <i class="fa fa-lock"></i>
-                <input type="password" placeholder="Password" name="password" id="input">
+                <input type="password" placeholder="Password" name="password" id="input" required>
             </div>
             <div class="box-input">
                 <i class="fa-solid fa-signature"></i>
-                <input type="text" placeholder="Nama" name="nama" id="input">
+                <input type="text" placeholder="Nama" name="nama" id="input" required>
             </div>
             <div class="box-input">
                 <i class="fa-solid fa-address-book"></i>
-                <input type="text" placeholder="Alamat" name="alamat" id="input">
+                <input type="text" placeholder="Alamat" name="alamat" id="input" required>
             </div>
             <div class="box-input">
             <i class="fa fa-envelope-open-text"></i> 
-                <input type="text" placeholder="Email" name="email" id="input">
+                <input type="text" placeholder="Email" name="email" id="input" required>
             </div>
             <div class="box-input">
                 <i class="fa-solid fa-address-card"></i>
-                <input type="text" placeholder="No Handphone" name="hp" id="input">
+                <input type="tel" placeholder="08XX XXXX XXXX" pattern="[0-9]{4}[0-9]{4}[0-9]{4}" name="hp" id="input" required>
             </div>
             <button type="submit" name="regis" class="btn-input">Sign In</button>
             <div class="bottom">
                 <p>Sudah Terdaftar ?
-                    <a href="test.php">Login Ulang Sini!</a>
+                    <a href="login.php">Login Ulang Sini!</a>
                 </p>
             </form>
     </div>

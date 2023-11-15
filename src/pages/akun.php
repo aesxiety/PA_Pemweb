@@ -1,10 +1,14 @@
+<?php
+require "../util/loginSession.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="path-to-your-fontawesome/css/all.css"> <!-- Ganti path dengan path sesuai tempat penyimpanan font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,7 +20,7 @@
         }
 
         nav {
-            background-color: #333;
+            background-color:  #7720FE;
             color: #fff;
             padding: 10px;
             text-align: right;
@@ -33,11 +37,11 @@
         }
 
         aside {
-            width: 250px;
+            width: 0p15x;
             height: 100%;
-            background-color: #333;
+            background-color: #7750FE;
             color: #fff;
-            padding: 20px;
+            padding: 19px;
             box-sizing: border-box;
         }
 
@@ -47,11 +51,11 @@
         }
 
         footer {
-            background-color: #333;
+            background-color: #7720FE;
             color: #fff;
             padding: 10px;
             text-align: center;
-            margin-top: auto; /* Mendorong footer ke bagian bawah */
+            margin-top: auto;
         }
 
         .icon a {
@@ -74,27 +78,32 @@
 </head>
 <body>
     <nav>
-        <a href="../util/logout.php">Logout</a>
         <a href="UserPage.php">Kembali</a>    
+        <a href="../util/logout.php">Logout</a>
     </nav>
 
     <header>
         <aside>
-            <div class="dropdown">
-                <a href="#" class="menu-link">Manajemen Akun</a>
-                <div class="dropdown-content">
-                    <a href="informasi_rekening.php" class="menu-item">Informasi Rekening</a>
-                    <a href="pesanan.php" class="menu-item">Alamat Saya</a>
-                </div>
-            </div>
-
-            <a href="#" class="menu-item">Pesanan Saya</a>
-
-            <a href="#" class="menu-item">Chat Admin</a>
+            <ul>
+                <li><a href="#" class="menu-link">Manajemen Akun</a></li>
+                <li><a href="informasi_rekening.php" class="menu-item">Informasi Rekening</a></li>
+                <li><a href="pesanan.php" class="menu-item">Pesanan</li>
+                <li><a href="#" class="menu-item">Chat </li>
+                <li></li>
+            </ul>
         </aside>
 
         <main>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium earum sapiente dignissimos deleniti aspernatur, in libero est consectetur repellat provident nesciunt vero illo eius? Nemo aliquid rem obcaecati beatae pariatur?
+            Quos vel qui dolore, tempora rerum illum incidunt ea porro ullam numquam nam odit ipsum tenetur laudantium cum mollitia, perspiciatis ipsa cupiditate fuga eveniet facere? Debitis asperiores ad exercitationem minima!
+            Laboriosam non esse maiores quis dolor. Ullam aperiam doloremque nihil dignissimos dolorem quibusdam. Exercitationem nostrum dolorem consequuntur modi assumenda doloremque quis porro optio qui! Sit consequuntur modi reprehenderit voluptatem id.
+            Ratione quos ad illum quod et magnam earum quidem praesentium! Dolorum cumque fugiat eveniet sint nisi accusamus aspernatur. Nihil, harum consectetur? Velit, minus natus. Laudantium reiciendis cumque minus repellat fugiat.
+            Odio tempore iste rerum optio consectetur dignissimos excepturi eveniet ipsam voluptatibus aut, error vero corporis et alias beatae deserunt, porro vitae. Commodi est animi nostrum corporis nemo molestias porro harum?
+            Cupiditate autem ipsam, quae impedit aliquam laborum animi eum iste asperiores id eligendi aliquid ducimus omnis laboriosam saepe praesentium sit reiciendis voluptatum numquam eos. Ut consectetur quidem deleniti ex dolorum?
+            Delectus sapiente illum magni. Fugit voluptas ullam perferendis repellat molestias ex omnis, alias rerum accusamus accusantium recusandae necessitatibus voluptate a fuga, in dicta consectetur sunt hic consequuntur cupiditate non tenetur.
+            Soluta nemo possimus officia, aliquam molestiae ea illo perspiciatis iusto impedit praesentium sit tenetur quos a aperiam veniam necessitatibus labore quae temporibus deserunt iste autem facere animi pariatur voluptatibus. Iure!
+            Laborum neque ipsa tempore, deserunt nostrum, possimus iste maxime illum architecto porro, blanditiis similique. Soluta inventore omnis dolor nemo quae distinctio non assumenda, earum fugiat quisquam voluptas illo exercitationem molestiae?
+            Sapiente, possimus quos! Nisi vitae quae provident impedit, facilis beatae ea inventore ut molestias atque ratione. Quos repellat culpa praesentium dolor et voluptatibus modi, quas hic, id harum repudiandae expedita.</p>
         </main>
     </header>
 
@@ -119,18 +128,5 @@
             <p>Copyright 2023, Designed By Kelompok PA</p>
         </div>
     </footer>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Menangani perilaku dropdown
-        var dropdown = document.querySelector('.dropdown');
-        dropdown.addEventListener('mouseover', function () {
-            dropdown.querySelector('.dropdown-content').style.display = 'block';
-        });
-        dropdown.addEventListener('mouseout', function () {
-            dropdown.querySelector('.dropdown-content').style.display = 'none';
-        });
-    });
-</script>
 </body>
 </html>

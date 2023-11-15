@@ -29,7 +29,6 @@ require "util/katalog.php";
                 <li><a href="keranjang.php">Keranjang</a></li>
             </ul>
             <div class="tema">icon</div>
-
         </div>
     </nav>  -->
 
@@ -42,11 +41,10 @@ require "util/katalog.php";
                 <img src="asset/logo.png" alt=""> 
         </div>
         <ul>
-            <li><a href="pages/akun.php">Akun</a></li>
             <li><a href="#home">Home</a></li>
             <li><a href="#howto">How To Order</a></li>
             <li><a href="#about">About US</a></li>
-            <li><a href="pages/keranjang.php">Keranjang</a></li>
+            <li><a href="pages/login.php">Login | Regist</a></li>
             <li><i id="toggleDark" class="fa-solid fa-moon"></i>
         </ul>
     </nav>
