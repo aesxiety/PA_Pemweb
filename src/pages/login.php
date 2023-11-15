@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['logged'] = true;
             $_SESSION['id_akun'] = $row['id_akun'];
             $_SESSION['username'] = $row['username'];
+            $_SESSION['email'] = $row['email']; // Set the email
             $_SESSION['userType'] = $row['type'];
             $userType = $row['type'];
 
