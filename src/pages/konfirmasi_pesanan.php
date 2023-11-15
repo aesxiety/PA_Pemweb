@@ -48,7 +48,6 @@ if (isset($_POST['konfirmasi-dibatalkan'])) {
     }
 }
 
-
 ?>
 
 <!DOCTYPE html>
