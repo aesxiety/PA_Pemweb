@@ -132,7 +132,7 @@ if (isset($_POST["pesan"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../javascript/jquery.js"></script>
-    <link rel="stylesheet" href="../style/create_pesanan_style.css">
+    <link rel="stylesheet" href="../style/addChart.css">
     <title>Document</title>
 </head>
 <body>

@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+   /* background: #7752fee2; */
+   background: url(../asset/lightpic.png);
+   background-size: cover;
+   backdrop-filter: blur(40px);
+}
+
+.container {
+    margin: 0 40px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.container h1 {
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 10px white;
+}
+
+.container .tab {
+    position: relative;
+    background-color: white;
+    padding: 0 20px 20px;
+    box-shadow: 0 0 50px white;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.container .tab input {
+    appearance: none;
+}
+
+.container .tab label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.container .tab label::after {
+    content: "+";
+    position: absolute;
+    right: 20px;
+    font-size: 2em;
+    color: #7752fee2;
+    transition: transform 1s;
+}
+
+.container .tab label::after :hover {
+    color: #7752fee2;
+}
+
+.container .tab input:checked ~label::after{
+    transform: rotate(135deg);
+}
+
+.container .tab label h2
+{
+    width: 40px;
+    height: 40px;
+    background: #7752fee2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.25em;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.container .tab label h3 {
+    position: relative;
+    font-weight: 500;
+    color: #7752fee2;
+    z-index: 10;
+}
+
+.container .tab .content {
+    max-height: 0;
+    transition: 1s;
+    overflow: hidden;
+}
+
+.container .tab input:checked ~ .content {
+    max-height: 100vh;
+}
+
+.container .tab  .content p {
+    position: relative;
+    padding: 10px 0;
+    color: black;
+    z-index: 10;
+}

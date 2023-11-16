@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../asset/lightpic.png);
+    background-size: cover;
+    backdrop-filter: blur(20px);
+    backdrop-filter: size(100%);
+}
+
+body a {
+    margin-left: 20px;
+    padding: 10px;
+    position: relative;
+    color: white;
+    background-color: #7752FE;
+    box-shadow: 0 0 30px #7752FE;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+body a:hover {
+    color: #231949;
+    transform: scale(1.2);
+    transition: 0.3s;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 20px white;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+    margin: auto;   
+    background-color:  #7752FE;;
+    border-radius: 8px;
+    box-shadow: 0 0 10px white;
+    padding: 30px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    background-color: white;
+    box-shadow: 0 0 30px #ffffff;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.cart-item img {
+    width: 100px;
+    height: 100px;
+    margin-right: 40px;
+}
+
+.input-jumlah {
+    display: flex;
+    align-items: center;
+}
+
+.input-jumlah button {
+    background-color:  #7752FE;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.input-jumlah input {
+    width: 50px;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.cart-total {
+    text-align: right;
+    margin-top: 20px;
+}
+
+#total-pembayaran {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 20px  white;
+}
+
+button {
+    display: block;
+    justify-content: center;
+    margin-left: 100px;
+    background-color: #ffffff;
+    color: #7752FE;
+    box-shadow: 0 0 20px  #7752FE;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+button:hover {
+    color: #ffffff;
+    transform: scale(1.2);
+    background-color: #573cb8; /* Adjusted color on hover */
+}
+
+.centered-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    background-color: #7752FE;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 0px;
+}
+
+.centered-form a,
+.centered-form img,
+.centered-form div {
+    margin-bottom: 15px; 
+}

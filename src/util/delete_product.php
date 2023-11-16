@@ -6,7 +6,7 @@ require "../util/koneksi.php";
 // Check if the user is an admin (you should define the criteria for admin users)
 if ($userType !== 'admin') {
     // Redirect to an unauthorized page or handle unauthorized access as needed
-    header("Location: unauthorized.php");
+    header("Location: ../index.php");
     exit();
 }
 
@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
 
     if ($result) {
         // Product deleted successfully
-        header("Location: ../pages/catalog_manager.php");
+        header("Location: ../admin/manajemen_katalog.php");
         exit();
     } else {
         // Handle the case when the deletion fails

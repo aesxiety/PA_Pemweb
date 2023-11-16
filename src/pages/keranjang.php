@@ -25,11 +25,11 @@ if ($result_cari_keranjang->num_rows > 0) {
     $id_pesanan = $conn->insert_id;
 }
 
-$detailpesanan = mysqli_query($conn, "SELECT dtl.*, psn.* ,usr.*,spt.* FROM detail_pesanan dtl
+$detailpesanan = mysqli_query($conn, "SELECT * FROM detail_pesanan dtl
 JOIN user usr ON usr.id_akun =dtl.id_pelanggan
 JOIN sepatu spt ON spt.id_sepatu = dtl.id_sepatu
 JOIN pesanan psn ON psn.id_pesanan = dtl.id_pesanan
-WHERE dtl.id_pelanggan = $id_pelanggan AND dtl.id_pesanan = $id_pesanan" );
+WHERE dtl.id_pelanggan = $id_akun AND psn.status_pesanan = 'keranjang'" );
 $array_join = [];
 
 while ($row = mysqli_fetch_assoc($detailpesanan)) {
@@ -42,7 +42,6 @@ if (empty($array_join)) {
             document.location.href = 'UserPage.php';
         </script>";
 }
-
 if (isset($_POST["pesan"])) {
     $total_pembayaran = $_POST['total-pembayaran-input'];
     $id_pelanggan = $id_akun;
@@ -80,7 +79,7 @@ if (isset($_POST["pesan"])) {
 
     echo "<script>
             alert('Pesanan berhasil di-checkout');
-            document.location.href = 'pembayaran.php';
+            document.location.href = 'UserPage.php';
         </script>";
 }
 
@@ -89,37 +88,45 @@ if (isset($_POST["pesan"])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Data Pesanan</title>
+<link rel="icon" href="../asset/logo.png">
+    <link rel="stylesheet" href="../style/k.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Keranjang</title>
 </head>
 <body onload="setLocalTime()">
-    <a href="UserPage.php">Kembali</a>
+<a href="UserPage.php">
+    <i class="fa-solid fa-backward"></i> Back</a>
     <h1>Data Pesanan</h1>
-    <form action="" method="post">
-        <?php
-        foreach ($array_join as $pesanan_item) {
-            echo "<a href='../util/delete_keranjang.php?id={$pesanan_item['id_detail_pesanan']}'>Hapus</a>";
-            echo "<img src='../img/" . $pesanan_item['sepatu_img'] . "' alt='Image Sepatu' width='150' height='150'><br>";        echo "Ukuran Sepatu: " . $pesanan_item['ukuran_sepatu'] . "<br>";
-            echo "Nama Sepatu: " . $pesanan_item['nama_sepatu'] . "<br>";
-            echo "Harga: " . $pesanan_item['harga'] . "<br>";
-            echo "<div class='input-jumlah'>";
-            echo "Jumlah Sepatu: ";
-            echo "<button type='button' onclick='decrement(this)'>-</button>";
-            echo "<input type='number' id='jumlah-sepatu' name='jumlah_sepatu[]' value='{$pesanan_item['jumlah_sepatu']}' min='1' max='99' required>";
-            echo "<button type='button' onclick='increment(this)'>+</button>";
-            echo "</div>";
-        }
-        ?>
-        <br>
-        <div>
-            <div id="total-pembayaran">Total Pembayaran: 0</div>
-            <br>
-            <button type="submit" name="pesan">CheckOut</button>
+    <form action="" method="post" class="centered-form">
+    <?php foreach ($array_join as $pesanan_item) : ?>
+        <div class="cart-item">
+            <a href='../util/delete_keranjang.php?id=<?= $pesanan_item['id_detail_pesanan'] ?>'>Hapus</a>
+            <img src='../img/<?= $pesanan_item['sepatu_img'] ?>' alt='Image Sepatu' width='150' height='150'>
+            <div class="item-details">
+                <p>Ukuran Sepatu: <?= $pesanan_item['ukuran_sepatu'] ?></p>
+                <p>Nama Sepatu: <?= $pesanan_item['nama_sepatu'] ?></p>
+                <p>Harga: <?= $pesanan_item['harga'] ?></p>
+                <div class='input-jumlah'>
+                    <p>Jumlah Sepatu: </p>
+                    <button type='button' onclick='decrement(this)'>-</button>
+                    <input type='number' name='jumlah_sepatu[]' value='<?= $pesanan_item['jumlah_sepatu'] ?>' min='1' max='99' required>
+                    <button type='button' onclick='increment(this)'>+</button>
+                </div>
+            </div>
         </div>
-        <!-- hidden input -->
-        <input type="number" name="total-pembayaran-input" id="total-pembayaran-input" value="0" hidden>
-        <input type="datetime-local" name="local-time" id="local-time-input" hidden>
-        
-    </form>
+    <?php endforeach; ?>
+
+    <div class="cart-total">
+        <div id="total-pembayaran">Total Pembayaran: 0</div>
+        <br>
+        <button type="submit" name="pesan">CheckOut</button>
+    </div>
+    
+    <!-- Hidden input fields -->
+    <input type="number" name="total-pembayaran-input" id="total-pembayaran-input" value="0" hidden>
+    <input type="datetime-local" name="local-time" id="local-time-input" hidden>
+</form>
+
     
 <!-- mengambil local datetime -->
 <script>

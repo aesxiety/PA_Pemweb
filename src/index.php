@@ -1,17 +1,17 @@
 <?php
 require "util/katalog.php";
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../style/user_page_style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="asset/logo.png">
-    <link rel="stylesheet" href="style/user_page_style.css">
+    <link rel="stylesheet" href="style/userp.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>landing Page Ngawi</title>
+    <title>Landing Page Ngawi</title>
 </head>
 <body>
 
@@ -25,28 +25,27 @@ require "util/katalog.php";
         </div>
         <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#howto">How To Order</a></li>
-            <li><a href="#about">About US</a></li>
+            <li><a href="pages/howto.php">How To Order</a></li>
+            <li><a href="pages/aboutus.html">About US</a></li>
+            <li><a href="keranjang.html">Keranjang</a></li>
             <li><a href="pages/login.php">Login | Regist</a></li>
             <li><i id="toggleDark" class="fa-solid fa-moon"></i>
         </ul>
     </nav>
-    <header class="land" id="home">
-        <img src="asset/Landing.png" alt="">
+    <header class="land" id="home" style="width: 100% ">
+        <img src="asset/darklanding.png" alt="">
     </header>
 
 
     <!-- Bagian Isi Konten -->
-    <div class="banner">
-        <img src="asset/size-chart.png" alt="banner1">
-    </div>
+
 
     <div class="katalog-sepatu">
         <div class="kategori">
-            <a href="#" onclick="loadKatalog('ALL')">VIEW ALL</a>
-            <a href="#" onclick="loadKatalog('MAN')">MAN</a>
-            <a href="#" onclick="loadKatalog('WOMEN')">WOMEN</a>
-            <a href="#" onclick="loadKatalog('UNISEX')">UNISEX</a>
+            <a href="#" onclick="loadKatalog('ALL')">View All</a>
+            <a href="#" onclick="loadKatalog('MAN')">Man</a>
+            <a href="#" onclick="loadKatalog('WOMEN')">Women</a>
+            <a href="#" onclick="loadKatalog('UNISEX')">Unisex</a>
         </div>
         <div class="card-container">
             <?php foreach ($data_sepatu_array as $sepatu) : ?>
@@ -55,11 +54,6 @@ require "util/katalog.php";
                     <h3><?php echo $sepatu['nama_sepatu']; ?></h3>
                     <p>Jenis Sepatu: <?php echo $sepatu['jenis_sepatu']; ?></p>
                     <p>Harga Sepatu: <?php echo $sepatu['harga']?></p>
-                    <p>Deskripsi :</p>
-                    <p><?php echo $sepatu['deskripsi']; ?></p>
-                    <a href="./pages/addchart.php?id=<?php echo $sepatu['id_sepatu']; ?>">
-                        <button>Pesan Sekarang</button>
-                    </a>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -87,8 +81,26 @@ require "util/katalog.php";
                 });
         }   
         }
+
+        document.getElementById('searchInput').addEventListener('keyup', function () {
+            var input, filter, cards, card, title, i;
+            input = document.getElementById('searchInput');
+            filter = input.value.toUpperCase();
+            cards = document.querySelectorAll('.card');
+
+            for (i = 0; i < cards.length; i++) {
+                card = cards[i];
+                title = card.getElementsByTagName('h3')[0];
+
+                if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        });
         </script>
-        
+
         <!-- Bagian Footer -->
         <footer>
         <div class="footer" id="setting">
@@ -109,7 +121,7 @@ require "util/katalog.php";
             </div>
             <div class="footerb">
             <img src="asset/logo.png" alt="" style="width: 50px; height: 50px;">
-                <p>Copyright 2023,Designed By Kelompok PA</p>
+                <br><p>Copyright 2023,Designed By Kelompok 7</p>
             </div>
         </div>
         </footer>

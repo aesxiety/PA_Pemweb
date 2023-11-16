@@ -86,20 +86,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-        <style>
-        .detail-pembayaran input{
-            border: none;
-            outline: none;
-        }
-        .rekening-info input{
-            border: none;
-            outline: none;
-        }
-        .rekening-info {
-            display: none;
-        }
-    </style>
+    <title>Pembayaran</title>
+    <link rel="stylesheet" href="../style/pembayaran.css">
 </head>
 <body>
 <form action="" method="post" enctype="multipart/form-data">

@@ -29,7 +29,7 @@ if (isset($_POST["tambah"])) {
             VALUES ('$nama_sepatu', '$jenis_sepatu', '$harga_sepatu','$deskripsi', '$gambar_baru')");
 
         if ($result) {
-            header("Location: AdminPage.php");
+            header("Location: index.php");
             exit();
         } else {
             echo "Gagal menyimpan data ke database. Silakan coba lagi.";
@@ -49,7 +49,7 @@ if (isset($_POST["tambah"])) {
     <title>Document</title>
 </head>
 <body>
-    <a href="AdminPage.php">Kembali</a>
+    <a href="manajemen_katalog.php">Kembali</a>
     <form action="" method="post" enctype="multipart/form-data" >
 
         <div class="input-image">

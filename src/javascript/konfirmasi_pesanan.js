@@ -7,3 +7,8 @@ function toggleDropdown(dropdownId) {
     var dropdown = document.getElementById(dropdownId);
     dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
 }
+
+function toggleSubAkun() {
+    var submenu = document.getElementById('sub-akun');
+    submenu.style.display = (submenu.style.display === 'none' || submenu.style.display === '') ? 'block' : 'none';
+}

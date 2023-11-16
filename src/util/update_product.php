@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result) {
         // Product updated successfully
-        header("Location: ../pages/catalog_manager.php");
+        header("Location: ../admin/manajemen_katalog.php");
         exit();
     } else {
         // Handle the case when the update fails

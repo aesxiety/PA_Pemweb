@@ -9,49 +9,77 @@ if ($userType !== 'admin') {
     </script>";
 }
 
-$result_query = mysqli_query($conn, "SELECT * FROM pesanan WHERE status_pesanan = 'sudah dibayar'");
+$result_query = mysqli_query($conn, "SELECT * FROM pesanan WHERE status_pesanan  != 'keranjang'");
 $array_konfirmasi = [];
 
 while ($row = mysqli_fetch_assoc($result_query)) {
     $array_konfirmasi[] = $row;
 }
 
-if (isset($_POST['cek-transaksi'])) {
-    $cek_transaksi = $_POST['id-pengecekan'];
-    $query = "SELECT * FROM transaksi WHERE id_pesanan = $cek_transaksi";
-    $select_data_transaksi = mysqli_query($conn, $query);
-
-    if ($select_data_transaksi) {
-        $data_transaksi = mysqli_fetch_assoc($select_data_transaksi);
+if (isset($_POST['status-dibatalkan'])) {
+    $id_pesanan = $_POST['id-pengecekan'];
+    $query = "UPDATE pesanan SET status_pesanan='dibatalkan' WHERE id_pesanan = $id_pesanan";
+    $result = mysqli_query($conn, $query);
+    if ($result) {
+        echo "<script>
+        alert('Status Berhasil Diperbarui');
+        document.location.href = 'konfirmasi_pesanan.php';
+        </script>";
     } else {
-        echo "Transaksi tidak ditemukan.";
-    }
-} else {
-    $data_transaksi = null;
-}
-
-if (isset($_POST['konfirmasi-diproses'])) {
-    $id_pesanan = $_POST['id-konfirmasi'];
-    $status_konfirmasi = $_POST['konfirmasi-diproses'];
-    $query_diproses = "UPDATE pesanan SET status_pesanan='diproses' WHERE id_pesanan = $id_pesanan ";
-    $result_diproses = mysqli_query($conn, $query_diproses);
-
-    if ($result_diproses) {
-        $status_pesanan = "Berhasil Diproses";
-    } else {
-        $status_pesanan = "Berhasil Diproses";
+        echo "<script>
+        alert('Status Gagal Diperbarui');
+        document.location.href = 'konfirmasi_pesanan.php';
+        </script>";
     }
 }
-if (isset($_POST['konfirmasi-dibatalkan'])) {
-    $id_pesanan = $_POST['id-konfirmasi'];
-    $status_konfirmasi = $_POST['konfirmasi-dibatalkan'];
-    $query_dibatalkan = "UPDATE pesanan SET status_pesanan='dibatalkan' WHERE id_pesanan = $id_pesanan";
-    $result_dibatalkan = mysqli_query($conn, $query_dibatalkan);
 
-    if ($result_dibatalkan) {
-        $status_pesanan = "Berhasil dibatalkan";
+if (isset($_POST['status-diproses'])) {
+    $id_pesanan = $_POST['id-pengecekan'];
+    $query = "UPDATE pesanan SET status_pesanan = 'diproses' WHERE id_pesanan = $id_pesanan ";
+    $result = mysqli_query($conn, $query);
+    if ($result) {
+        echo "<script>
+        alert('Status Berhasil Diperbarui');
+        document.location.href = 'konfirmasi_pesanan.php';
+        </script>";
     } else {
-        $status_pesanan = "Berhasil dibatalkan";
+        echo "<script>
+        alert('Status Gagal Diperbarui');
+        document.location.href = 'konfirmasi_pesanan.php';
+        </script>";
+    }
+}
+if (isset($_POST['status-dikirim'])) {
+    $id_pesanan = $_POST['id-pengecekan'];
+    $query= "UPDATE pesanan SET status_pesanan='dikirim' WHERE id_pesanan = $id_pesanan";
+    $result= mysqli_query($conn, $query);
+    if ($result) {
+        echo "<script>
+        alert('Status Berhasil Diperbarui');
+        document.location.href = 'konfirmasi_pesanan.php';
+        </script>";
+    } else {
+        echo "<script>
+        alert('Status gagal Diperbarui');
+        document.location.href = 'konfirmasi_pesanan.php';
+        </script>";
+    }
+}
+
+if (isset($_POST['status-selesai'])) {
+    $id_pesanan = $_POST['id-pengecekan'];
+    $query = "UPDATE pesanan SET status_pesanan='selesai' WHERE id_pesanan = $id_pesanan";
+    $result = mysqli_query($conn, $query);
+    if ($result) {
+        echo "<script>
+        alert('Status Berhasil Diperbarui');
+        document.location.href = 'konfirmasi_pesanan.php';
+        </script>";
+    } else {
+        echo "<script>
+        alert('Status Gagal Diperbarui');
+        document.location.href = 'konfirmasi_pesanan.php';
+        </script>";
     }
 }
 
@@ -63,39 +91,32 @@ if (isset($_POST['konfirmasi-dibatalkan'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/konfirmasi_pesanan.css">
-    <script src="script/konfirmasi_pesanan.js"></script>
+    <link rel="icon" href="../asset/logo.png">
+    <script src="script/admin.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
 </head>
 <body>
 <nav class="nav-admin">
-    <div class="show-more" onclick="toggleSubMenu()">=</div>
-    <a href="UserPage.php" class="home">Home</a>
-    <div class="welcome-text">Selamat Datang <?= $username ?></div>
-    <div class="submenu" id="submenu">
-        <p>
-            <a href="javascript:void(0);" onclick="toggleDropdown('dropdown1')">Manajemen Katalog</a>
-            <div class="dropdown" id="dropdown1">
-                <a href="tambah.php">Tambah Item</a>
-                <a href="catalog_manager.php">Ubah / Hapus Item</a>
-            </div>
-        </p>
-        <p>
-            <a href="javascript:void(0);" onclick="toggleDropdown('dropdown2')">Manajemen Pesanan</a>
-            <div class="dropdown" id="dropdown2">
-                <a href="#">Konfirmasi Pesanan</a>
-                <a href="#">Selesaikan Pesanan</a>
-                <a href="#">Lihat Detail Pesanan</a>
-            </div>
-        </p>
-        <p>
-            <a href="javascript:void(0);" onclick="toggleDropdown('dropdown3')">Lihat Kontak</a>
-            <div class="dropdown" id="dropdown3">
-                <a href="#">Lihat Pesan dari User</a>
-                <a href="#">Hapus Pesan</a>
-            </div>
-        </p>
-    </div>
-</nav>  
+        <div class="show-more" onclick="toggleSubMenu()"><i class="fa-solid fa-bars"></i></div>
+        <div class="welcome-text">Selamat Datang <?= $username ?></div>
+            <div class="submenu" id="submenu">
+                <a href="../pages/UserPage.php">Home</a>
+                <a href="index.php">Menu Admin</a>
+                <p>
+                    <a href="manajemen_katalog.php">Manajemen Katalog</a>
+                </p>
+                <a href="konfirmasi_pesanan.php">Konfirmasi Pesanan</a>
+                <p>
+                    <a href="javascript:void(0);" onclick="toggleDropdown('dropdown3')">Lihat Kontak</a>
+                    <div class="dropdown" id="dropdown3">
+                        <a href="#">Lihat Pesan dari User</a>
+                        <a href="#">Hapus Pesan</a>
+                    </div>
+                </p>
+                <a href="../util/logout.php">Log Out</a>
+        </div>
+    </nav>
 <div class="isi-page-admin">
 <div class="cek-pesanan">
         <?php
@@ -123,7 +144,11 @@ if (isset($_POST['konfirmasi-dibatalkan'])) {
                         <td>
                         <form action="" method="post">
                             <input type="number" name="id-pengecekan" value="<?= $record_toconfirm['id_pesanan'] ?>" hidden>
-                            <button type="submit" name="cek-transaksi">Cek Transaksi</button>
+                            <button><a href="detail_bayar.php?id=<?=$record_toconfirm['id_pesanan']?>">Cek Detail pembayaran</button>
+                            <button type="submit" name="status-diproses">Proses</button>
+                            <button type="submit" name="status-dikirim">Kirim</button>
+                            <button type="submit" name="status-selesai">Selesaikan</button>
+                            <button type="submit" name="status-dibatalkan">Batalkan</button>
                         </form>
                         </td>
                     </tr>
@@ -133,7 +158,7 @@ if (isset($_POST['konfirmasi-dibatalkan'])) {
         }
         ?>
     </div>
-    <div id="myModal" class="modal">
+    <!-- <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <div class="transaksi-pesanan">
@@ -167,7 +192,7 @@ if (isset($_POST['konfirmasi-dibatalkan'])) {
                 ?>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 <footer>
     <div class="footer" id="setting">
@@ -192,35 +217,6 @@ if (isset($_POST['konfirmasi-dibatalkan'])) {
         </div>
     </div>
     </footer>
-    
-    <script>
-        // Display modal when the button is clicked
-        function openModal() {
-            document.getElementById("myModal").style.display = "block";
-        }
-
-        // Close modal when close button or outside the modal is clicked
-        function closeModal() {
-            document.getElementById("myModal").style.display = "none";
-        }
-
-        // Close modal when the ESC key is pressed
-        document.onkeydown = function(event) {
-            event = event || window.event;
-            if (event.keyCode == 27) {
-                closeModal();
-            }
-        };
-
-        // Close modal when clicking outside of it
-        window.onclick = function(event) {
-            var modal = document.getElementById("myModal");
-            if (event.target == modal) {
-                closeModal();
-            }
-        };
-    </script>
-
 </body>
 
 </html>

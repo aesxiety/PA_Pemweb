@@ -20,14 +20,14 @@ if (isset($_GET['id'])) {
     
     if ($result->num_rows === 0) {
         // Message not found, handle this case
-        header("Location: message_not_found.php");
+        header("Location: index.php");
         exit();
     }
 
     $message = $result->fetch_assoc();
 } else {
     // Handle the case when 'id' is not provided in the URL
-    header("Location: message_not_found.php");
+    header("Location: index.php");
     exit();
 }
 ?>
