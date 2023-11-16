@@ -1,16 +1,24 @@
-*{
+<?php
+require "../util/loginSession.php";
+require "../util/katalog.php";
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style/user_page_style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../asset/logo.png">
+    <link rel="stylesheet" href="../style/user_page_style.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <style>
+         *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: all 0.4s ease;
-    scroll-behavior: smooth;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: black;
-    overflow-x: hidden;
-    color: #7752FE;
+    transition: all 0.4s ease;;
 }
 /* 
 nav .nav-bar {
@@ -36,85 +44,24 @@ nav .nav-bar {
 } */
 
 /* css katalog */
-
-.card-container {
-    padding: 10px;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.card {
-    background-color:#7752FE;
-    border-radius: 20px;
-    border: 1px solid #7752FE; 
-    padding: 10px;
-    width: 300px; 
-    color: white;
-    box-shadow: 0 4px 8px #7752FE;  
-}
-
-.card img {
-    width: 100%; 
-    height: auto;
-}
-
-.card h3 {
-    text-align: center;
-    margin-top: 0;
-}
-
-.card p {
-    text-align: center;
-    margin: 10px 0; 
-}
-
-.card button {
-    border-radius: 10px;
-    background-color: white; 
-    color: #7752FE; 
-    padding: 10px 15px; 
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 0px 20px white;  
-    display: block;
-    text-decoration: none;
-    margin: 0 auto; 
-}
-
-.card button:hover {
-    color: #7752FE;
-    transform: scale(1.1);
-    transition: 0.3s;
-}
-
-
-
-.kategori {
-    background: linear-gradient(to right, black, #7752FE);
-    color: #7752FE; 
-    box-shadow: 0 10px 100px ;
-    width: 100%;
+.kategori{
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 0 15% 0 15%;
 }
-
 .kategori a{
-    padding: 10px;
-    color: white;
-    text-decoration: none;
-    box-shadow: #7752FE;
     text-align: center;
     min-width: fit-content;
+    padding: 0 100px 0 100px;
 }
+.card-container {
+    padding: 0 15% 0 15%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
 
-.kategori :hover {
-    color: #7752FE;
-    transform: scale(1.2);
-    transition: 0.3s;
-}
 /* .footers {
     position: relative;
     min-height: 100vh;
@@ -141,14 +88,14 @@ footer {
 
 
 /* Login Dan Regis */
-/* 
+
 *, html {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     scroll-behavior: smooth;
-} */
+}
 
 body {
     background-color: white;
@@ -167,10 +114,6 @@ body.dark {
 .fa-solid:hover {
     transform: scale(1.2);
     transition: 0.3s;
-}
-
-.land {
-    width: 100%;
 }
 
 
@@ -341,16 +284,13 @@ div main article p {
     bottom: 20px;
 }
 
-.banner {
-display: flex;
-}
 /* footer */
 
 
 footer {
     background-color: rgba(0, 0, 0, 0.362);
     backdrop-filter: blur(50);
-    box-shadow: 0px 0px 10px 0px #7752FE ;
+    box-shadow: 0px 0px 10px 0px pink ;
     
 }
 
@@ -403,7 +343,7 @@ footer {
 .footern ul li a{
     text-decoration: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
+    color: gray;
     margin: 0px 20px;
 }
 
@@ -415,7 +355,7 @@ footer {
 .footerb {
     display: flex;
     justify-content: center;
-    color: white;
+    color: gray;
     margin-top: 10px;
     font-size: 10px;
     flex-direction: column;
@@ -439,8 +379,8 @@ footer {
     }
     nav ul {
         position: fixed;
-        top: 65px;
-        width: 200%;
+        top: 81px;
+        width: 100%;
         background-color: rgba(0, 0, 0, 0.334);
         max-height: 0;
         flex-direction: column;
@@ -453,7 +393,7 @@ footer {
     }
 
     nav li:hover {
-        background: white;
+        background: darkgray;
     }
 
     nav a {
@@ -495,62 +435,86 @@ footer {
         } 
     }
 
-.nav-admin {
-    background: linear-gradient(to right, black, #7752FE);
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    color: white;
-}
+    </style>
+    <title>landing Page Ngawi</title>
+</head>
+<body>
+    <!-- <nav>
+        <div class="nav-bar">
 
-.submenu {
-    display: none;
-    flex-direction: column;
-    width: 200px;
-    height: 100vh;
-    position: absolute;
-    top: 100%; /* Place it below the show-more button */
-    left: 0;
-    background: #7752FE;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1; /* Ensure the dropdown appears above other elements */
-}
+            <div class="logo">
+                <h1>ini logo</h1>
+            </div>
+            <ul class="nav-link">
+                <li><a href=""><i class='bx bx-user' ></i></a></li>
+                <li><a href="akun.php">akun</a></li>
+                <li><a href="">Home</a></li>
+                <li><a href="">How To Orfer</a></li>
+                <li><a href="">About Us</a></li>
+                <li><a href="keranjang.php">Keranjang</a></li>
+            </ul>
+            <div class="tema">icon</div>
 
-.submenu a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    display: block;
-    transition: background-color 0.3s;
-}
+        </div>
+    </nav>  -->
 
-.submenu a:hover {
-    background-color: #f1f1f1;
-}
+    <!-- Bagian Navbar -->
+    <nav>
+        <input type="checkbox" name="" id="nav-button">
+        <label for="nav-button">&#9776</label>
 
-.submenu .dropdown {
-    display: none;
-    background-color: white;
-}
-
-.submenu .dropdown a {
-    color: black;
-    padding:8px;
-}
-
-.show-more {
-    cursor: pointer;
-    font-size: 20px;
-    margin-right: 10px;
-}
+        <div class="logo">
+                <img src="../asset/logo.png" alt=""> 
+        </div>
+        <ul>
+            <li><a href="akun.php">Akun</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#howto">How To Order</a></li>
+            <li><a href="#about">About US</a></li>
+            <li><a href="keranjang.php">Keranjang</a></li>
+            <li><i id="toggleDark" class="fa-solid fa-moon"></i>
+        </ul>
+    </nav>
+    <header class="land" id="home">
+        <img src="asset/Landing.png" alt="">
+    </header>
 
 
+    <!-- Bagian Isi Konten -->
+    <
+        <form action="../util/process_message.php" method="POST" enctype="multipart/form-data">
+            <h2>Contact Us</h2>
+            <label for="message">Message:</label>
+            <textarea id="message" name="pesan" rows="4" required></textarea>
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" name="image" accept="image/*">
+            <input type="submit" value="Submit">
+        </form>
+  
 
-.submenu.show {
-    display: flex;
-}
-
-.submenu .dropdown.show {
-    display: flex;
-}
+        <!-- Bagian Footer -->
+        <footer>
+        <div class="footer" id="setting">
+            <div class="icon">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-tiktok"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <div class="footern">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Setting</a></li>
+                    <li><a href="#">About Me</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footerb">
+            <img src="../asset/logo.png" alt="" style="width: 50px; height: 50px;">
+                <p>Copyright 2023,Designed By Kelompok PA</p>
+            </div>
+        </div>
+        </footer>
+</body>
+</html>

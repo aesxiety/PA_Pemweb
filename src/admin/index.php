@@ -19,14 +19,15 @@ if ($userType !== 'admin') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/admin_page.css">
     <script src="script/admin.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Admin Landing Page</title>
 </head>
 
 <body>
     <nav class="nav-admin">
-        <div class="show-more" onclick="toggleSubMenu()">=</div>
-        <a href="UserPage.php" class="home">Home</a>
-        <div class="welcome-text">Selamat Datang <?= $username ?></div>
+        <div class="show-more" onclick="toggleSubMenu()"><i class="fa-solid fa-bars"></i></div>
+        <a href="index.php" class="home">Home</a>
+        <div class="welcome-text">Selamat Datang</div>
         <div class="submenu" id="submenu">
             <p>
                 <a href="javascript:void(0);" onclick="toggleDropdown('dropdown1')">Manajemen Katalog</a>
@@ -55,7 +56,7 @@ if ($userType !== 'admin') {
     <div class="isi-page-admin">
     <h1>Ini Isi</h1>
     <h1>Ini Admin</h1>
-</div>
+    </div>
     <footer>
         <div class="footer" id="setting">
             <div class="icon">

@@ -1,4 +1,4 @@
-<?php
+    <?php
 require "../util/loginSession.php";
 require "../util/katalog.php";
 require "../util/koneksi.php";
@@ -37,7 +37,10 @@ if (isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <title>Edit Product</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="style/edit_produk.css">
+=======
+>>>>>>> 103840a3c0b3736b61a67d841c6117f17fefcbb3
 </head>
 <body>
     <h1>Edit Product</h1>
