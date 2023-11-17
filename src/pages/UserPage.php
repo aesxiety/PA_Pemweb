@@ -129,6 +129,22 @@ require "../util/katalog.php";
                 }
             }
         });
+
+        var button = document.getElementById("toggleDark");
+
+        button.addEventListener("click", function() {
+            this.classList.toggle('fa-moon')
+            this.classList.toggle('fa-sun')
+        
+            document.querySelector("body").classList.toggle("dark");
+            var img = document.querySelector(".land > img");
+            if (img.src.endsWith("darklanding.png")) {
+                img.src = "../asset/lightlanding.png";
+            } else {
+                img.src = "../asset/darklanding.png";
+            }
+            }
+        )
         </script>
   
 

@@ -133,7 +133,8 @@ if (isset($_POST["pesan"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../javascript/jquery.js"></script>
     <link rel="stylesheet" href="../style/addChart.css">
-    <title>Document</title>
+    <link rel="icon" href="../asset/logo.png">
+    <title>Tambah Sepatu Ke keranjang</title>
 </head>
 <body>
     <a href="UserPage.php">Kembali</a>

@@ -55,6 +55,7 @@ if(mysqli_num_rows($result_cek_rekening) > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <link rel="icon" href="../asset/logo.png">
     <link rel="stylesheet" href="path-to-your-fontawesome/css/all.css"> <!-- Ganti path dengan path sesuai tempat penyimpanan font-awesome -->
     <link rel="stylesheet" href="../style/edit_rekening.css">
 </head>

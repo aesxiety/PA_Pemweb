@@ -36,9 +36,7 @@ require "util/katalog.php";
         <img src="asset/darklanding.png" alt="">
     </header>
 
-
     <!-- Bagian Isi Konten -->
-
 
     <div class="katalog-sepatu">
         <div class="kategori">
@@ -99,6 +97,22 @@ require "util/katalog.php";
                 }
             }
         });
+
+        var button = document.getElementById("toggleDark");
+
+        button.addEventListener("click", function() {
+            this.classList.toggle('fa-moon')
+            this.classList.toggle('fa-sun')
+        
+            document.querySelector("body").classList.toggle("dark");
+            var img = document.querySelector(".land > img");
+            if (img.src.endsWith("darkpic.png")) {
+                img.src = "../asset/lightpic.png";
+            } else {
+                img.src = "../asset/darkpic.png";
+            }
+            }
+        )
         </script>
 
         <!-- Bagian Footer -->

@@ -22,6 +22,7 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <title>Admin Message List</title>
+    <link rel="icon" href="../asset/logo.png">
 </head>
 <body>
     <h1>Admin Message List</h1>

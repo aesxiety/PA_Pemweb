@@ -37,7 +37,7 @@ if (isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <title>Edit Product</title>
-
+    <link rel="icon" href="../asset/logo.png">
     <link rel="stylesheet" href="style/edit_produk.css">
 </head>
 <body>

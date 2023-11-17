@@ -511,7 +511,7 @@ footer {
     width: 200px;
     height: 100vh;
     position: absolute;
-    top: 100%; /* Place it below the show-more button */
+    top: 7%; /* Place it below the show-more button */
     left: 0;
     background: #7752FE;
     border: 1px solid #ddd;
